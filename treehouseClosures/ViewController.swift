@@ -19,6 +19,21 @@ class ViewController: UIViewController {
         print(evenNums)
         print(doSomethingWithNumbers([1,2,3], operation: double))
         // Do any additional setup after loading the view, typically from a nib.
+        let printAndReturnIntegerFunc=printerFunction()
+        printAndReturnIntegerFunc(2)
+        printAndReturnIntegerFunc(3)
+        
+        let runningTotalFunction = printerFunction()
+        runningTotalFunction(4)
+        
+    let difference = mathOperation(differenceBetweenNumbers,a: 4,b: 2)
+        print(difference)
+        
+        //environment consisting of function and captured variables within scope is called closure. runningTotalFunction and printAndReturnIntegerFunc are different closures, so runnningTotal is 20 in the first case and 10 in the second case
+        // // // // // // // //
+        // MIND BLOWN
+        // // // // // // // //
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -65,6 +80,34 @@ class ViewController: UIViewController {
     {
         return 2*a
     }
+    
+    func someFunction(number:Int) ->Void
+    {
+        
+    }
+    
+    func printerFunction ()-> ((Int)->())
+    {
+        var runningTotal = 0
+        func printInteger(number:Int)->()
+        {
+            runningTotal+=10
+            print("the int is \(number)")
+            print("running total is \(runningTotal)")
+        }
+        return printInteger
+    }
+    
+    func differenceBetweenNumbers(a: Int, b:Int) -> (Int)
+    {
+        return a - b
+    }
+    
+    func mathOperation (operation:(Int,Int)->Int,a:Int,b:Int)->(Int)
+    {
+        return operation(a,b)
+    }
+
 
 }
 
